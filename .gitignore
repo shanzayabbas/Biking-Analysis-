@@ -1,0 +1,25 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Given data
+#Time, units (hr)
+Time_hr = np.array([0.5, 1, 0.75, 1.5, 0.25, 1, 0.75, 1, 2, 0.5, 1, 1.5]) 
+#Distance, units (km)
+Distance_km = np.array([7.2, 14.4, 10.8, 22, 3.6, 14, 10.8, 14, 28.8, 7.2, 14.4, 22]) 
+
+#Convert Time to Seconds & Distance to Meters
+Time_seconds = Time_hr * 3600
+Distance_m = Distance_km * 1000
+
+#Calculate velocity
+slope,intercept = np.polyfit(Time_seconds, Distance_m, 1)
+print(f"The Slope of the grpah (Velocity): {slope:.2f} m/s")
+
+# Plot of Distance vs. Time
+plt.plot(Time_hr, Distance_km, 'o', label='Data')
+plt.xlabel('Time (hr)')
+plt.ylabel('Distance (km)')
+plt.title('Distance Traveled While Biking Over Time')
+plt.grid(True)
+plt.legend()
+plt.show()
